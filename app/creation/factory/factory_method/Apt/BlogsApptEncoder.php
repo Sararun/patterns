@@ -1,6 +1,6 @@
 <?php
 
-namespace App\creation\factory_method;
+namespace App\creation\factory\factory_method\Apt;
 
 class BlogsApptEncoder implements ApptEncoder
 {
