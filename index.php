@@ -1,6 +1,10 @@
 <?php
 namespace App;
 use App\creation\factory\BloggsCommsManager;
+use App\creation\prototype\Earth\EarthForest;
+use App\creation\prototype\Earth\EarthPlains;
+use App\creation\prototype\Earth\EarthSea;
+use App\creation\prototype\TerrainFactory;
 use App\creation\singleton\SoloInstance;
 use App\Enums\BlogObjectsEnum;
 
@@ -31,3 +35,10 @@ echo $commsManager->getAptEncoder()->encode(). "<br/>";
 //Test Abstract factory
 
 echo (new BloggsCommsManager())->makeBlogObject(BlogObjectsEnum::TTD)->encode(). "<br/>";
+
+//Test prototype
+
+$terrainFactory = new TerrainFactory(new EarthSea('deep_water', 15), new EarthPlains(123, 25), new EarthForest('tree', 25));
+echo $terrainFactory->getForest()->getName(). "<br/>";
+
+
