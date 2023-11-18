@@ -1,7 +1,8 @@
 <?php
 namespace App;
-use App\creation\factory_method\BloggsCommsManager;
+use App\creation\factory\BloggsCommsManager;
 use App\creation\singleton\SoloInstance;
+use App\Enums\BlogObjectsEnum;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -26,3 +27,7 @@ echo $singletonTwo->getProperty('property'). "<br/>";
 $commsManager = new BloggsCommsManager();
 
 echo $commsManager->getAptEncoder()->encode(). "<br/>";
+
+//Test Abstract factory
+
+echo (new BloggsCommsManager())->makeBlogObject(BlogObjectsEnum::TTD)->encode(). "<br/>";
