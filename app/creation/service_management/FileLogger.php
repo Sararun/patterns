@@ -1,6 +1,6 @@
 <?php
 
-namespace App\creation\service_locator;
+namespace App\creation\service_management;
 
 class FileLogger implements LoggerInterface
 {

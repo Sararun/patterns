@@ -1,6 +1,6 @@
 <?php
 
-namespace App\creation\service_locator;
+namespace App\creation\service_management\service_locator;
 
 use http\Exception\InvalidArgumentException;
 
