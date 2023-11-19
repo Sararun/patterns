@@ -1,5 +1,6 @@
 <?php
 namespace App;
+use App\creation\builder\Product;
 use App\creation\factory\BloggsCommsManager;
 use App\creation\prototype\Earth\EarthForest;
 use App\creation\prototype\Earth\EarthPlains;
@@ -40,5 +41,14 @@ echo (new BloggsCommsManager())->makeBlogObject(BlogObjectsEnum::TTD)->encode().
 
 $terrainFactory = new TerrainFactory(new EarthSea('deep_water', 15), new EarthPlains(123, 25), new EarthForest('tree', 25));
 echo $terrainFactory->getForest()->getName(). "<br/>";
+
+//Test builder
+
+$product = Product::build()
+    ->setName('product')
+    ->setDescription('description')
+    ->setPrice(10)
+    ->get();
+print_r($product);
 
 
