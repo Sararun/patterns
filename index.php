@@ -61,7 +61,12 @@ $serviceLocator = new ServiceLocator();
 $serviceLocator->register('logger', new FileLogger());
 
 $logger = $serviceLocator->get('logger');
-echo $logger->log("Message for logging");
 echo $logger->log("Message for logging") . "<br/>";
+
+// Test Dependency Injection
+
+$logger = new FileLogger();
+$app = new Application($logger);
+echo $app->run() . "<br/>";
 
 
