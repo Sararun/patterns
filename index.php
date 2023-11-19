@@ -6,6 +6,8 @@ use App\creation\prototype\Earth\EarthForest;
 use App\creation\prototype\Earth\EarthPlains;
 use App\creation\prototype\Earth\EarthSea;
 use App\creation\prototype\TerrainFactory;
+use App\creation\service_locator\FileLogger;
+use App\creation\service_locator\ServiceLocator;
 use App\creation\singleton\SoloInstance;
 use App\Enums\BlogObjectsEnum;
 
@@ -50,5 +52,13 @@ $product = Product::build()
     ->setPrice(10)
     ->get();
 print_r($product);
+
+//Test Service Locator
+
+$serviceLocator = new ServiceLocator();
+$serviceLocator->register('logger', new FileLogger());
+
+$logger = $serviceLocator->get('logger');
+echo $logger->log("Message for logging");
 
 
