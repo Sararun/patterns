@@ -11,6 +11,9 @@ use App\creation\service_management\FileLogger;
 use App\creation\service_management\service_locator\ServiceLocator;
 use App\creation\singleton\SoloInstance;
 use App\Enums\BlogObjectsEnum;
+use App\structural\composite\Archer;
+use App\structural\composite\Army;
+use App\structural\composite\LaserCannon;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -69,4 +72,15 @@ $logger = new FileLogger();
 $app = new Application($logger);
 echo $app->run() . "<br/>";
 
+//Test Composite
+
+$army = new Army();
+$army->addUnit(new Archer());
+$army->addUnit(new LaserCannon());
+$secondArmy = new Army();
+$secondArmy->addUnit(new Archer());
+$secondArmy->addUnit(new Archer());
+$army->addUnit($secondArmy);
+
+echo $army->bombardStrength(). "<br/>";
 
