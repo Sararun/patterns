@@ -9,11 +9,12 @@ use App\creation\prototype\baseClasses\Sea;
 class TerrainFactory
 {
     public function __construct(
-        private readonly Sea    $sea,
+        private readonly Sea $sea,
         private readonly Plains $plains,
         private readonly Forest $forest
-    )
-    {}
+    ) {
+    }
+
     public function getSea(): Sea
     {
         return clone $this->sea;

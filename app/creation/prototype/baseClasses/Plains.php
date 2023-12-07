@@ -8,8 +8,7 @@ abstract class Plains
     public function __construct(
         protected int $coordinates,
         protected int $square
-    )
-    {
+    ) {
         if ($this->square < 1) {
             throw new \Exception('Square must be greater than 0');
         }

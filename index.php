@@ -1,5 +1,7 @@
 <?php
+
 namespace App;
+
 use App\creation\builder\Product;
 use App\creation\factory\BloggsCommsManager;
 use App\creation\prototype\Earth\EarthForest;
@@ -31,22 +33,26 @@ unset($singleton);
 
 $singletonTwo = SoloInstance::getInstance();
 
-echo $singletonTwo->getProperty('property'). "<br/>";
+echo $singletonTwo->getProperty('property') . "<br/>";
 
 //Test Factory Method
 
 $commsManager = new BloggsCommsManager();
 
-echo $commsManager->getAptEncoder()->encode(). "<br/>";
+echo $commsManager->getAptEncoder()->encode() . "<br/>";
 
 //Test Abstract factory
 
-echo (new BloggsCommsManager())->makeBlogObject(BlogObjectsEnum::TTD)->encode(). "<br/>";
+echo (new BloggsCommsManager())->makeBlogObject(BlogObjectsEnum::TTD)->encode() . "<br/>";
 
 //Test prototype
 
-$terrainFactory = new TerrainFactory(new EarthSea('deep_water', 15), new EarthPlains(123, 25), new EarthForest('tree', 25));
-echo $terrainFactory->getForest()->getName(). "<br/>";
+$terrainFactory = new TerrainFactory(
+    new EarthSea('deep_water', 15),
+    new EarthPlains(123, 25),
+    new EarthForest('tree', 25)
+);
+echo $terrainFactory->getForest()->getName() . "<br/>";
 
 //Test builder
 
@@ -82,5 +88,5 @@ $secondArmy->addUnit(new Archer());
 $secondArmy->addUnit(new Archer());
 $army->addUnit($secondArmy);
 
-echo $army->bombardStrength(). "<br/>";
+echo $army->bombardStrength() . "<br/>";
 

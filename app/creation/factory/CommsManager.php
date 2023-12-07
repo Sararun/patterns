@@ -8,5 +8,6 @@ use App\creation\factory\factory_method\Ttd\TtdEncoder;
 interface CommsManager
 {
     public function getAptEncoder(): ApptEncoder;
+
     public function getTtdEncoder(): TtdEncoder;
 }

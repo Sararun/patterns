@@ -5,6 +5,7 @@ namespace App\structural\composite;
 class Army extends Unit
 {
     private array $units = [];
+
     public function addUnit(Unit $unit): void
     {
         if (in_array($unit, $this->units, true)) {
