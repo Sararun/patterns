@@ -11,9 +11,9 @@ abstract class Forest
      * @throws Exception
      */
     public function __construct(
-        protected string $name, protected int $countOfTrees
-    )
-    {
+        protected string $name,
+        protected int $countOfTrees
+    ) {
         if ($countOfTrees < 1) {
             throw new Exception('Count of trees must be more than 0');
         }

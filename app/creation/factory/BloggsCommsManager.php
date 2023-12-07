@@ -23,7 +23,7 @@ class BloggsCommsManager implements CommsManager
 
     public function makeBlogObject(BlogObjectsEnum $blogObjectsEnum): TtdEncoder|ApptEncoder
     {
-        return match($blogObjectsEnum) {
+        return match ($blogObjectsEnum) {
             BlogObjectsEnum::APT => $this->getAptEncoder(),
             BlogObjectsEnum::TTD => $this->getTtdEncoder(),
             default => throw new \Exception

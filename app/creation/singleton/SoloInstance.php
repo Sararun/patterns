@@ -10,7 +10,6 @@ class SoloInstance
 
     private function __construct()
     {
-
     }
 
     public static function getInstance(): self
@@ -20,6 +19,7 @@ class SoloInstance
         }
         return self::$instance;
     }
+
     public function setProperty(string $key, string $value): void
     {
         $this->props[$key] = $value;

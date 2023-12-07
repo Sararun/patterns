@@ -2,8 +2,6 @@
 
 namespace App\structural\composite;
 
-use App\structural\composite\Unit;
-
 class LaserCannon extends Unit
 {
     public function addUnit(Unit $unit): void
