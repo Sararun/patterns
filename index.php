@@ -16,6 +16,9 @@ use App\Enums\BlogObjectsEnum;
 use App\structural\composite\Archer;
 use App\structural\composite\Army;
 use App\structural\composite\LaserCannon;
+use App\structural\decorator\DiamondDecorator;
+use App\structural\decorator\Plains;
+use App\structural\decorator\PollutionDecorator;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -89,4 +92,15 @@ $secondArmy->addUnit(new Archer());
 $army->addUnit($secondArmy);
 
 echo $army->bombardStrength() . "<br/>";
+
+//Test decorator
+
+$tile = new Plains();
+echo $tile->getWealthFactor() . "<br/>";
+
+$tile = new DiamondDecorator($tile);
+echo $tile->getWealthFactor() . "<br/>";
+
+$tile = new PollutionDecorator($tile);
+echo $tile->getWealthFactor() . "<br/>";
 
