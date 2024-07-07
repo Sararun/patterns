@@ -19,6 +19,9 @@ use App\structural\composite\LaserCannon;
 use App\structural\decorator\DiamondDecorator;
 use App\structural\decorator\Plains;
 use App\structural\decorator\PollutionDecorator;
+use App\structural\facade\OperationFacade;
+use App\structural\facade\SubSystem1;
+use App\structural\facade\SubSystem2;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -103,4 +106,13 @@ echo $tile->getWealthFactor() . "<br/>";
 
 $tile = new PollutionDecorator($tile);
 echo $tile->getWealthFactor() . "<br/>";
+
+//Test facade
+
+$subSystem1 = new SubSystem1();
+$subSystem2 = new SubSystem2();
+
+$operationFacade = new OperationFacade($subSystem1, $subSystem2);
+
+print_r($operationFacade->subsystemsOperations());
 
