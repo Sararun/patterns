@@ -13,6 +13,9 @@ use App\creation\service_management\FileLogger;
 use App\creation\service_management\service_locator\ServiceLocator;
 use App\creation\singleton\SoloInstance;
 use App\Enums\BlogObjectsEnum;
+use App\structural\adapter\EbookAdapter;
+use App\structural\adapter\Kindle;
+use App\structural\adapter\PaperBook;
 use App\structural\composite\Archer;
 use App\structural\composite\Army;
 use App\structural\composite\LaserCannon;
@@ -116,3 +119,15 @@ $operationFacade = new OperationFacade($subSystem1, $subSystem2);
 
 print_r($operationFacade->subsystemsOperations());
 
+//Adapter test
+
+$paperBook = new PaperBook();
+$paperBook->open();
+echo $paperBook->getPage();
+$paperBook->turnPage();
+
+$kindle = new Kindle();
+$adaptedEbook = new EbookAdapter($kindle);
+$adaptedEbook->open();
+echo $adaptedEbook->getPage();
+$adaptedEbook->turnPage();
