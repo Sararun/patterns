@@ -16,6 +16,9 @@ use App\Enums\BlogObjectsEnum;
 use App\structural\adapter\EbookAdapter;
 use App\structural\adapter\Kindle;
 use App\structural\adapter\PaperBook;
+use App\structural\bridge\HelloWorldText;
+use App\structural\bridge\HtmlFormatter;
+use App\structural\bridge\PlainTextFormatter;
 use App\structural\composite\Archer;
 use App\structural\composite\Army;
 use App\structural\composite\LaserCannon;
@@ -131,3 +134,14 @@ $adaptedEbook = new EbookAdapter($kindle);
 $adaptedEbook->open();
 echo $adaptedEbook->getPage();
 $adaptedEbook->turnPage();
+
+//Bridge test
+
+$htmlFormatter = new HtmlFormatter();
+$plainTextFormatter = new PlainTextFormatter();
+
+$text = new HelloWorldText($plainTextFormatter);
+echo $text->print(); //Hello world!
+
+$text = new HelloWorldText($htmlFormatter);
+echo $text->print(); //<p>Hello world</p>

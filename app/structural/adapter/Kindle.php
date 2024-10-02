@@ -2,7 +2,7 @@
 
 namespace App\structural\adapter;
 
-class Kindle implements EBook
+class Kindle implements Ebook
 {
     private int $page = 1;
 
