@@ -28,6 +28,7 @@ use App\structural\decorator\PollutionDecorator;
 use App\structural\facade\OperationFacade;
 use App\structural\facade\SubSystem1;
 use App\structural\facade\SubSystem2;
+use App\structural\flyweight\ShapeFactory;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -145,3 +146,20 @@ echo $text->print(); //Hello world!
 
 $text = new HelloWorldText($htmlFormatter);
 echo $text->print(); //<p>Hello world</p>
+
+//Flyweight test
+
+$factory = new ShapeFactory();
+
+$shape1 = $factory->getShape('red');
+$shape2 = $factory->getShape('red');
+
+$shape3 = $factory->getShape('blue');
+
+$shape1->draw(10, 20);
+$shape2->draw(30, 40);
+$shape3->draw(50, 60);
+
+if ($shape1 === $shape2) {
+    echo "Shape1 and Shape2 share the same Flyweight instance.\n";
+}
