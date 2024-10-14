@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\behavioral\chane_responsibility\FirstHandler;
+use App\behavioral\chane_responsibility\SecondHandler;
 use App\creation\builder\Product;
 use App\creation\factory\BloggsCommsManager;
 use App\creation\prototype\Earth\EarthForest;
@@ -163,3 +165,14 @@ $shape3->draw(50, 60);
 if ($shape1 === $shape2) {
     echo "Shape1 and Shape2 share the same Flyweight instance.\n";
 }
+
+//Chane responosobility test
+
+$handler1 = new FirstHandler();
+$handler2 = new SecondHandler();
+
+$handler1->setNextHandler($handler2);
+echo "<br>";
+echo $handler1->handleRequest("first") . "<br>";
+echo $handler1->handleRequest("second") . "<br>";
+echo $handler1->handleRequest("third") . "<br>"; // Handler not found
