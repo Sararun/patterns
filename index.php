@@ -4,6 +4,9 @@ namespace App;
 
 use App\behavioral\chane_responsibility\FirstHandler;
 use App\behavioral\chane_responsibility\SecondHandler;
+use App\behavioral\command\ConcreteCommand;
+use App\behavioral\command\Invoker;
+use App\behavioral\command\Receiver;
 use App\creation\builder\Product;
 use App\creation\factory\BloggsCommsManager;
 use App\creation\prototype\Earth\EarthForest;
@@ -176,3 +179,11 @@ echo "<br>";
 echo $handler1->handleRequest("first") . "<br>";
 echo $handler1->handleRequest("second") . "<br>";
 echo $handler1->handleRequest("third") . "<br>"; // Handler not found
+
+//Command test
+
+$receiver = new Receiver();
+$command = new ConcreteCommand($receiver);
+$invoker = new Invoker();
+$invoker->setCommand($command);
+echo $invoker->executeCommand();
