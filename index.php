@@ -8,6 +8,9 @@ use App\behavioral\command\ConcreteCommand;
 use App\behavioral\command\Invoker;
 use App\behavioral\command\Receiver;
 use App\behavioral\iterator\IteratorAggregater;
+use App\behavioral\mediator\Button;
+use App\behavioral\mediator\ConcreteMediator;
+use App\behavioral\mediator\TextField;
 use App\creation\builder\Product;
 use App\creation\factory\BloggsCommsManager;
 use App\creation\prototype\Earth\EarthForest;
@@ -209,4 +212,21 @@ foreach ($collection->getReverseIterator() as $item) {
     echo "<br>";
     echo $item . "\n";
 }
+
+//Mediator
+try {
+    $button = new Button();
+    $textField = new TextField();
+
+    $a = new ConcreteMediator($button, $textField);
+
+    $button->click();
+//    echo "\n";
+//    $textField->keyPress();
+
+}catch (\Throwable $t) {
+    echo $t->getMessage();
+}
+
+
 
