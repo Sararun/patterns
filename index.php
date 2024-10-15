@@ -7,6 +7,7 @@ use App\behavioral\chane_responsibility\SecondHandler;
 use App\behavioral\command\ConcreteCommand;
 use App\behavioral\command\Invoker;
 use App\behavioral\command\Receiver;
+use App\behavioral\iterator\IteratorAggregater;
 use App\creation\builder\Product;
 use App\creation\factory\BloggsCommsManager;
 use App\creation\prototype\Earth\EarthForest;
@@ -187,3 +188,25 @@ $command = new ConcreteCommand($receiver);
 $invoker = new Invoker();
 $invoker->setCommand($command);
 echo $invoker->executeCommand();
+
+//Iterator test
+
+$collection = new IteratorAggregater();
+$collection->addItem("First");
+$collection->addItem("Second");
+$collection->addItem("Third");
+
+echo "<br>";
+echo "Straight traversal:\n";
+foreach ($collection->getIterator() as $item) {
+    echo "<br>";
+    echo $item . "\n";
+}
+
+echo "<br>";
+echo "Reverse traversal:\n";
+foreach ($collection->getReverseIterator() as $item) {
+    echo "<br>";
+    echo $item . "\n";
+}
+
