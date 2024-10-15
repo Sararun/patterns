@@ -11,6 +11,8 @@ use App\behavioral\iterator\IteratorAggregater;
 use App\behavioral\mediator\Button;
 use App\behavioral\mediator\ConcreteMediator;
 use App\behavioral\mediator\TextField;
+use App\behavioral\snapshot\Caretaker;
+use App\behavioral\snapshot\Originator;
 use App\creation\builder\Product;
 use App\creation\factory\BloggsCommsManager;
 use App\creation\prototype\Earth\EarthForest;
@@ -213,20 +215,33 @@ foreach ($collection->getReverseIterator() as $item) {
     echo $item . "\n";
 }
 
-//Mediator
-try {
-    $button = new Button();
-    $textField = new TextField();
+//Mediator test
+$button = new Button();
+$textField = new TextField();
 
-    $a = new ConcreteMediator($button, $textField);
+new ConcreteMediator($button, $textField);
 
-    $button->click();
-//    echo "\n";
-//    $textField->keyPress();
+$button->click();
+echo "\n";
+$textField->keyPress();
 
-}catch (\Throwable $t) {
-    echo $t->getMessage();
-}
+//Snapshot test
+echo "<br>";
+$originator = new Originator("State1");
+$caretaker = new Caretaker();
+
+$caretaker->add($originator->saveStateToMemento());
+
+$originator->setState("State2");
+$caretaker->add($originator->saveStateToMemento());
+
+$originator->setState("State3");
+echo "Current State: " . $originator->getState() . "<br>";
+
+$originator->getStateFromMemento($caretaker->get(0));
+echo "Restored State: " . $originator->getState() . "<br>";
+
+
 
 
 
