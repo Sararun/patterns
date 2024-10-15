@@ -11,6 +11,8 @@ use App\behavioral\iterator\IteratorAggregater;
 use App\behavioral\mediator\Button;
 use App\behavioral\mediator\ConcreteMediator;
 use App\behavioral\mediator\TextField;
+use App\behavioral\observer\Observer;
+use App\behavioral\observer\ObserverSubject;
 use App\behavioral\snapshot\Caretaker;
 use App\behavioral\snapshot\Originator;
 use App\creation\builder\Product;
@@ -240,6 +242,20 @@ echo "Current State: " . $originator->getState() . "<br>";
 
 $originator->getStateFromMemento($caretaker->get(0));
 echo "Restored State: " . $originator->getState() . "<br>";
+
+//Observer test
+
+$subject = new ObserverSubject();
+
+$o1 = new Observer();
+$subject->attach($o1);
+
+$subject->updateState(3); //Observer notifying
+
+$subject->detach($o1);
+
+$subject->updateState(3); //Observer not notifying
+
 
 
 
