@@ -15,6 +15,8 @@ use App\behavioral\observer\Observer;
 use App\behavioral\observer\ObserverSubject;
 use App\behavioral\snapshot\Caretaker;
 use App\behavioral\snapshot\Originator;
+use App\behavioral\state\Document;
+use App\behavioral\state\PendingState;
 use App\creation\builder\Product;
 use App\creation\factory\BloggsCommsManager;
 use App\creation\prototype\Earth\EarthForest;
@@ -255,6 +257,17 @@ $subject->updateState(3); //Observer notifying
 $subject->detach($o1);
 
 $subject->updateState(3); //Observer not notifying
+
+echo "\n";
+
+//State test
+
+$document = new Document();
+$pendingState = new PendingState($document);
+$document->setState($pendingState);
+$document->handle();
+echo "\n";
+
 
 
 
